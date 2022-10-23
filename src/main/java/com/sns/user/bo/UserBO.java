@@ -10,14 +10,17 @@ import com.sns.user.model.User;
 public class UserBO {
 	@Autowired
 	private UserDAO userDAO;
-	public boolean existLoginId(String loginId) {
+
+	public int existLoginId(String loginId) {
 		return userDAO.existLoginId(loginId);
 	}
-	public void addUser(String loginId, String password, String name, String email) {
-		userDAO.insertUser(loginId, password, name, email);
+
+	public int insertUser(String loginId, String password, String name, String email) {
+		return userDAO.insertUser(loginId, password, name, email);
 	}
 	
 	public User getUserByLoginIdAndPassword(String loginID, String password) {
 		return userDAO.selectUserByLoginIdAndPassword(loginID, password);
 	}
+	
 }

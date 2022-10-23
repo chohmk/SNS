@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/user")
 @Controller
 public class UserController {
-// 화면만띄우는 컨트롤러
 	/**
 	 * 회원가입 화면
 	 * @param model
@@ -20,7 +19,7 @@ public class UserController {
 		model.addAttribute("viewName", "user/signUp");
 		return "template/layout";
 	}
-	
+
 	/**
 	 * 로그인 화면
 	 * @param model
@@ -31,6 +30,7 @@ public class UserController {
 		model.addAttribute("viewName", "user/signIn");
 		return "template/layout";
 	}
+
 	/**
 	 * 로그아웃 화면
 	 * @param session
@@ -45,9 +45,11 @@ public class UserController {
 		return "redirect:/user/sign_in_view";
 	}
 	
-	@RequestMapping("time_line")
-	public String timeLine() {
+	@RequestMapping("time_line_view")
+	public String timeLineView() {
 		return "user/timeLine";
 	}
+	
+	
 
 }
