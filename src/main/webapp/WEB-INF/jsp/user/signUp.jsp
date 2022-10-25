@@ -134,9 +134,9 @@ $(document).ready(function() {
 		
 		// 1) ajax
 		var url = $('#signUpForm').attr("action");     // form에 있는 action 주소를 가져온다
-		var data = $('#signUpForm').serialize(); // 폼태그 한번에 보낼 수 있게 구성한다.(이걸 사용하지 않으면 data에 json을 직접 만들어야 함)
+		var params = $('#signUpForm').serialize(); // 폼태그 한번에 보낼 수 있게 구성한다.(이걸 사용하지 않으면 data에 json을 직접 만들어야 함)
 		
-		$.post(url, data)
+		$.post(url, params)
 		.done(function(data) {
 			if (data.result == "success") {
 				alert("가입을 환영합니다!!! 로그인을 해주세요.");				
