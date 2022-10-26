@@ -30,37 +30,37 @@
 </div>
 
 <script>
-	$(document).ready(function() {
-		$('#loginForm').on('submit', function(e) {
-			e.preventDefault();	// submit 중단
-
-
-			let loginId = $('input[name=loginId]').val().trim();
-			let password = $('input[name=password]').val().trim();
-			if (loginId == "") {
-				alert("아이디를 입력해주세요.");
-				return false;
+$(document).ready(function() {
+	// 로그인 서브밋
+	$('#loginForm').submit(function(e) {
+		e.preventDefault(); // submit 자동 수행 중단
+		
+		var loginId = $('input[name=loginId]').val().trim();
+		if (loginId == '') {
+			alert("아이디를 입력해주세요.");
+			return;
+		}
+		
+		var password = $('input[name=password]').val();
+		if (password == '') {
+			alert("비밀번호를 입력해주세요.");
+			return;
+		}
+		
+		// AJAX로 서브밋
+		var url = $(this).attr("action");
+		var data = $(this).serialize(); // form의 name 속성으로 data를 구성한다.
+		
+		$.post(url, data)
+		.done(function(data) {
+			if (data.result == "success") {
+				location.href="/timeline/timeline_view"; 
+			} else {
+				alert("로그인에 실패했습니다. 다시 시도해주세요.");
 			}
-			
-			if (password == "") {
-				alert("비밀번호를 입력해주세요.");
-				return false;
-			}
-			
-			// ajax
-			let url = $(this).attr('action');
-			let params = $(this).serialize();	// loginId=aaa&password=aaa
-			
-			$.post(url, params)
-			.done(function(data) {
-				if (data.code == 100) {	// 성공
-					location.href = "/post/post_list_view";	// 글 목록 화면으로 이동.
-				} else {
-					alert(data.errorMessage);	
-				}
-			});
-		});
+		}); 
 	});
+});
 </script>
 
 

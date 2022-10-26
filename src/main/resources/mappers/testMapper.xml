@@ -2,13 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sns.test.dao.TestDAO">
-
+<mapper namespace="com.sns.test.TestDAO">
 	<select id="selectTest" resultType="map">
-      	SELECT
-      		*
-      	FROM
-      		`post`
-    </select>
-
+		SELECT
+			*
+		FROM
+			`user`
+	</select>
 </mapper>
