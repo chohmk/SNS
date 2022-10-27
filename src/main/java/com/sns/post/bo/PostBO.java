@@ -31,7 +31,4 @@ public class PostBO {
 	public List<Post> getPostList() {
 		return postDAO.selectPostList();
 	}
-	
-	// 댓글쓰기
-	
 }

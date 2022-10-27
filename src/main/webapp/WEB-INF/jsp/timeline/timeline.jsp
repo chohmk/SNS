@@ -26,13 +26,13 @@
 		
 		<%-- 타임라인 영역 --%>
 		<div class="timeline-box my-5">
-			<c:forEach items="${postList}" var="post">
+			<c:forEach items="${cardList}" var="card">
 			
 			<%-- 카드1 --%>
 			<div class="card border rounded mt-3">
 				<%-- 글쓴이, 더보기(삭제) --%>
 				<div class="p-2 d-flex justify-content-between">
-					<span class="font-weight-bold">글쓴이</span>
+					<span class="font-weight-bold">${card.user.loginId}</span>
 					<a href="#" class="more-btn">
 						<img src="https://www.iconninja.com/files/860/824/939/more-icon.png" width="30">
 					</a>
@@ -40,7 +40,7 @@
 				
 				<%-- 카드 이미지 --%>
 				<div class="card-img">
-					<img src="${post.imagePath}" class="w-100" alt="본문 이미지">
+					<img src="${card.post.imagePath}" class="w-100" alt="본문 이미지">
 				</div>
 				
 				<%-- 좋아요 --%>
@@ -55,8 +55,8 @@
 				
 				<%-- 글 --%>
 				<div class="card-post m-3">
-					<span class="font-weight-bold">글쓴이명</span>
-					<span>${post.content}</span>
+					<span class="font-weight-bold">${card.user.loginId}</span>
+					<span>${card.post.content}</span>
 				</div>
 				
 				<%-- 댓글 --%>
@@ -180,24 +180,29 @@ $(document).ready(function() {
 		let comment = $(this).siblings('input').val().trim();
 		//alert(comment);
 		
+		if (comment == '') {
+			alert("댓글 내용을 입력해주세요");
+			return;
+		}
+		
 		$.ajax({
-			type:"POST"
-			, url:"/comment/create"
-			, data:{"postId":postId}
-			, success:function(data){
-				if (data.code == 100) {
-					alert("댓글쓰기 성공");
-				} else {
-					alert("댓글쓰기 실패");
+			type:'POST'
+			,url:'/comment/create'
+			,data: {"postId":postId, "content":comment}
+			,success: function(data) {
+				if (data.result == 'success') {
+					location.reload(); // 새로고침
+				} else if (data.code == 300) {
+					alert("로그인을 해주세요.");
+					location.href = "/user/sign_in_view";
 				}
 			}
-			, error:function(e) {
-				alert("댓글쓰기에 실패하였습니다.");
+			,error: function(jqXHR, textStatus, errorThrown) {
+				var errorMsg = jqXHR.responseJSON.status;
+				alert(errorMsg + ":" + textStatus);
 			}
-			
 		});
 	});
-	
 	
 }); //-- ready 끝
 </script>
