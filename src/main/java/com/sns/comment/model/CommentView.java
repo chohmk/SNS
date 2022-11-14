@@ -2,7 +2,7 @@ package com.sns.comment.model;
 
 import com.sns.user.model.User;
 
-// 댓글 한개
+//댓글 한개
 public class CommentView {
 	// 댓글 한개
 	private Comment comment;

@@ -10,12 +10,12 @@ public class EncryptUtils {
 			MessageDigest md = MessageDigest.getInstance("MD5");
 
 			byte[] bytes = message.getBytes();
-	        md.update(bytes);
-	        byte[] digest = md.digest();
+			md.update(bytes);
+			byte[] digest = md.digest();
 
-	        for(int i = 0; i < digest.length; i++ ) {
-	            encData += Integer.toHexString(digest[i]&0xff); // 16진수로 변환하는 과정
-	        }
+			for (int i = 0; i < digest.length; i++) {
+				encData += Integer.toHexString(digest[i] & 0xff); // 16진수로 변환하는 과정
+			}
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
 		}
