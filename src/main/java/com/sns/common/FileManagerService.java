@@ -16,7 +16,7 @@ public class FileManagerService {
 	private Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	// 실제 이미지가 저장될 경로(서버)
-	public static final String FILE_UPLOAD_PATH = "C:\\코딩\\백앤드\\spring\\Clone_sns\\clone\\src\\main\\resources\\static\\img";
+	public static final String FILE_UPLOAD_PATH = "D:\\조현\\spring\\sns\\images/";
 
 	// input: 멀티파트 파일, userLoginId
 	// output: 이미지 패스
