@@ -20,6 +20,7 @@ public class CommentBO {
 	@Autowired
 	private UserBO userBO;
 	
+	// 댓글isnert
 	public void createComment(int userId, int postId, String content) {
 		commentDAO.insertComment(userId, postId, content);
 	}

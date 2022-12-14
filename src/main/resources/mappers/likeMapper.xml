@@ -15,24 +15,7 @@
 			</if>
 	</select>
 
-	<select id="existLike" parameterType="map" resultType="boolean">
-		SELECT
-			COUNT(1)
-		FROM
-			`like`
-		WHERE
-			`postId` = #{postId}
-			AND `userId` = #{userId}
-	</select>
-	
-	<select id="selectLikeCountByPostId" parameterType="int" resultType="int">
-		SELECT
-			COUNT(1)
-		FROM
-			`like`
-		WHERE
-			`postId` = #{postId}
-	</select>
+
 	
 	<insert id="insertLike" parameterType="map">
 		INSERT INTO `like`

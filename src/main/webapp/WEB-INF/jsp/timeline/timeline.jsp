@@ -216,7 +216,7 @@ $(document).ready(function() {
 		
 		$.ajax({
 			type:'POST'
-			,url:'/comment/create'
+			,url:"/comment/create"
 			,data: {"postId":postId, "content":comment}
 			,success: function(data) {
 				if (data.result == 'success') {
